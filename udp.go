@@ -89,7 +89,8 @@ func correctSource(oob []byte) []byte {
 	// If the dst is definitely an IPv6, then use ipv6's ControlMessage to
 	// respond otherwise use ipv4's because ipv6's marshal ignores ipv4
 	// addresses.
-	if dst.To4() == nil {
+	// TODP: For some reasons inside networks extensions this one not works
+	/*if dst.To4() == nil {
 		cm := new(ipv6.ControlMessage)
 		cm.Src = dst
 		oob = cm.Marshal()
@@ -98,5 +99,6 @@ func correctSource(oob []byte) []byte {
 		cm.Src = dst
 		oob = cm.Marshal()
 	}
+	*/
 	return oob
 }
